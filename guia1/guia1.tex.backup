@@ -1,0 +1,135 @@
+\documentclass[10pt]{article}
+%\usepackage{wallpaper}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[top=1in, bottom=1.0in, left=1.5in, right=1.5in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{animate}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage[makeroom]{cancel}
+\usepackage{mathtools}% Loads amsmath
+
+
+
+\pagestyle{empty}
+%\setlength\parindent{0pt}
+
+\begin{document}
+
+%\vspace{1.5cm}
+\hfill{Buenos Aires, \today} \\
+
+\begin{center}
+ {\large \bf Estructura Electrónica de Materias: \\
+ Cálculo desde primeros principios} \\
+ 
+ \vspace{0.25cm}
+ Guía Práctica N\degree 1
+\end{center}
+
+\vspace{0.5cm}
+\noindent
+1. {\bf Principio Variacional}:
+
+\vspace{0.25cm}
+Siendo $\left|\psi_n\right>$ la solución exacta de la ecuación de Schr\"odinger
+independiente del tiempo de un sistema de N partículas,
+\begin{equation}
+ \hat{H}\left|\psi_n\right> = E_n\left|\psi_n\right>\,
+\end{equation}
+y $\left|\epsilon\right>$ un vector que representa un error pequeño.
+Si el autovalor solución $\left|\phi\right>$ que se obtiene del 
+principio variacional difiere de la solución exacta por $\left|\epsilon\right>$: 
+\begin{equation}
+ \phi=\left|\psi_n\right>+\left|\epsilon\right>\,,
+\end{equation}
+entonces, el error en la energía, $E[\phi]-E_n$, es de segundo orden.
+
+\begin{center}
+ \noindent\rule[0.5ex]{0.9\linewidth}{0.1pt}
+\end{center}
+
+Del principio variacional, se define el funcional de la energía
+\begin{equation}
+ E[\phi] = \frac{\left< \phi \right| \hat{H} \left| \phi \right>}{\left< \phi | \phi \right>} \,.
+ \label{eq:prinvar}
+\end{equation}
+Si la autofunción solución puede escribirse como
+\begin{equation}
+ \left|\phi\right>=\left|\psi_n\right>+\left|\epsilon\right>\,
+\end{equation}
+y si $\left<\psi_n|\psi_n\right>=\left<\phi|\phi\right>=1$, entonces, la ecuación
+(\ref{eq:prinvar}) puede escribirse como
+\begin{eqnarray}
+ E\left[\phi\right] 
+ &=& \left< \psi_n+\epsilon \right| \hat{H} \left| \psi_n+\epsilon \right>  \\
+ &=& \left< \psi_n \right| \hat{H} \left| \psi_n \right> 
+     + \left< \psi_n \right| \hat{H} \left| \epsilon \right> 
+     + \left< \epsilon \right| \hat{H} \left| \psi_n \right> 
+     + \left< \epsilon \right| \hat{H} \left| \epsilon \right> \\
+ &=& E_n \underbrace{\left< \psi_n | \psi_n \right>}_{=1}
+  + \cancel{\left< \psi_n \right| \hat{H} \left| \epsilon \right>} 
+  + \cancel{\left< \epsilon \right| \hat{H} \left| \psi_n \right>} 
+  + \left< \epsilon \right| \hat{H} \left| \epsilon \right> \\
+ &=& E_n + \left< \epsilon \right| \hat{H} \left| \epsilon \right> \\
+ &\Rightarrow& \quad
+ E_n - E\left[\phi\right] = \mathcal{O}^2(\epsilon)
+\end{eqnarray}
+
+\vspace{0.5cm}
+\noindent
+2. {\bf Método de Hartree--Fock}:
+
+\vspace{0.25cm}
+El Hamiltoniano de dos electrones se escribe como:
+\begin{equation}
+ \hat{H} = -\frac{1}{2}\sum_{i=1}^2 \nabla^2 + \sum_{i=1}^2 v(\mathbf{r}_i) 
+ + \sum_{i<j}^2 \frac{1}{\mathbf{r}_{ij}}\,.
+\end{equation}
+Asumiendo que la función de onda del sistema está dada por
+\begin{equation}
+ \Psi^{\mathrm{HF}}(\mathbf{q}_1,\mathbf{q}_2)=\frac{1}{2}\left[
+ \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)-\psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1)
+ \right]\,,
+\end{equation}
+donde $q_i$ representa las coordenadas espaciales y de espín, 
+las ecuaciones de Hartree Fock del sistema resultan:
+% \begin{align*}
+%  \left[-\frac{1}{2} \nabla^2_1 + v(\mathbf{r}_1) \right]\psi_n(\mathbf{q}_1)
+%  &+ \left[\int\frac{\psi_m(\mathbf{q}_2) \psi_m(\mathbf{q}_2)}{r_{12}}
+%  \,d\mathbf{q}_2\right]\psi_n(\mathbf{q}_1) \\
+%  &\qquad- \left[\int\frac{\psi_m(\mathbf{q}_2) \psi_n(\mathbf{q}_2)}{r_{12}}
+%  \,d\mathbf{q}_2  \right]\psi_m(\mathbf{q}_1)
+%  = E_n \psi_n(\mathbf{q}_1) \\
+%  %%%%%%
+%  \left[-\frac{1}{2} \nabla^2_2 + v(\mathbf{r}_2) \right]\psi_m(\mathbf{q}_2)
+%  &+ \left[\int\frac{\psi_n(\mathbf{q}_1) \psi_n(\mathbf{q}_1)}{r_{12}}
+%  \,d\mathbf{q}_1\right]\psi_m(\mathbf{q}_2) \\
+%  &\qquad- \left[\int\frac{\psi_n(\mathbf{q}_1) \psi_m(\mathbf{q}_1)}{r_{12}}
+%  \,d\mathbf{q}_1  \right]\psi_n(\mathbf{q}_2)
+%  = E_m \psi_m(\mathbf{q}_2)
+% \end{align*}
+\begin{equation}
+ \left[ -\frac{1}{2} \nabla_i^2 + \mathcal{V}(\mathbf{q}_i) \right] \psi_{\lambda}(\mathbf{q}_i) 
+ = E_{\lambda} \psi_{\lambda}(\mathbf{q}_i)
+\end{equation}
+donde 
+\begin{equation}
+ \mathcal{V}(\mathbf{q}_i) = v(\mathbf{r}_i + \sum_{\mu}V_\mu^{\mathrm{d}}(\mathbf{r}_i)
+ - \sum_{\mu} V_{\mu}^{\mathrm{ex}}(\mathbf{q}_i)
+\end{equation}
+
+
+
+
+La energía de Hartree--Fock está dada por:
+\begin{equation}
+ E^{\mathrm{HF}}=\left<\Psi^{\mathrm{HF}}\right|\hat{H}\left|\Psi^{\mathrm{HF}}\right>
+\end{equation}
+
+
+
+\end{document}

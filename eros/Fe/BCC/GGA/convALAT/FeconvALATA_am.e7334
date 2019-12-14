@@ -1,0 +1,37 @@
+/var/spool/torque/mom_priv/jobs/7334.sol105.tandar.cnea.gov.ar.SC: line 2: PBS: command not found
+--------------------------------------------------------------------------
+[[53430,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: compute-1-10.local
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+[compute-1-10.local:26415] 3 more processes have sent help message help-mpi-btl-base.txt / btl:no-nics
+[compute-1-10.local:26415] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+--------------------------------------------------------------------------
+[[53460,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: compute-1-10.local
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+[compute-1-10.local:26445] 3 more processes have sent help message help-mpi-btl-base.txt / btl:no-nics
+[compute-1-10.local:26445] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+--------------------------------------------------------------------------
+[[53474,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: compute-1-10.local
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+[compute-1-10.local:26491] 3 more processes have sent help message help-mpi-btl-base.txt / btl:no-nics
+[compute-1-10.local:26491] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages

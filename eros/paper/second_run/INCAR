@@ -1,0 +1,7 @@
+System = Si diamante
+ISMEAR = 0; SIGMA = 0.1;
+ENMAX = 307 
+IBRION=-1;
+EDIFF = 0.1E-04
+SYM=0
+PREC=accurate

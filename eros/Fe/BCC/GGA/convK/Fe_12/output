@@ -1,0 +1,28 @@
+ running on    4 total cores
+ distrk:  each k-point on    4 cores,    1 groups
+ distr:  one band on    1 cores,    4 groups
+ using from now: INCAR     
+ vasp.5.4.1 24Jun15 (build Jul 19 2016 16:50:41) complex                        
+  
+ POSCAR found type information on POSCAR  Fe
+ POSCAR found :  1 types and       1 ions
+ LDA part: xc-table for Pade appr. of Perdew
+ POSCAR, INCAR and KPOINTS ok, starting setup
+ FFT: planning ...
+ WAVECAR not read
+ entering main loop
+       N       E                     dE             d eps       ncg     rms          rms(c)
+DAV:   1     0.132132514488E+02    0.13213E+02   -0.29725E+03  3684   0.561E+02
+DAV:   2    -0.831039455049E+01   -0.21524E+02   -0.19594E+02  3376   0.101E+02
+DAV:   3    -0.869479182590E+01   -0.38440E+00   -0.38301E+00  3864   0.157E+01
+DAV:   4    -0.869597079275E+01   -0.11790E-02   -0.11764E-02  3608   0.801E-01
+DAV:   5    -0.869597760098E+01   -0.68082E-05   -0.67937E-05  3796   0.623E-02    0.121E+01
+DAV:   6    -0.829909745028E+01    0.39688E+00   -0.94408E+00  3696   0.372E+01    0.494E+00
+DAV:   7    -0.825762815006E+01    0.41469E-01   -0.43898E-01  3828   0.777E+00    0.307E+00
+DAV:   8    -0.824927097568E+01    0.83572E-02   -0.63959E-03  3896   0.557E-01    0.124E+00
+DAV:   9    -0.824321157411E+01    0.60594E-02   -0.75194E-03  4352   0.553E-01    0.193E-01
+DAV:  10    -0.824312738120E+01    0.84193E-04   -0.70061E-04  3628   0.336E-01    0.492E-02
+DAV:  11    -0.824314332151E+01   -0.15940E-04   -0.39867E-05  3676   0.546E-02    0.369E-02
+DAV:  12    -0.824314411904E+01   -0.79753E-06   -0.20794E-06  3176   0.131E-02
+   1 F= -.82431441E+01 E0= -.82431441E+01  d E =0.000000E+00  mag=     2.2189
+ writing wavefunctions

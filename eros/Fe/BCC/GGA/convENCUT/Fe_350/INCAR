@@ -1,0 +1,8 @@
+System = Fe BCC 
+PREC = Accurate
+ENMAX = 350
+EDIFF =1E-6
+ISMEAR = -5
+ISPIN = 2 ! spin polarized calculation (ferro - magnetic )
+MAGMOM = 4   ! initial magnetic moments (anti - ferromagnetic ordering )
+LORBIT = 11

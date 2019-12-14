@@ -1,0 +1,32 @@
+ running on    4 total cores
+ distrk:  each k-point on    4 cores,    1 groups
+ distr:  one band on    1 cores,    4 groups
+ using from now: INCAR     
+ vasp.5.4.1 24Jun15 (build Jul 19 2016 16:50:41) complex                        
+  
+ POSCAR found type information on POSCAR  Fe
+ POSCAR found :  1 types and       1 ions
+ LDA part: xc-table for Pade appr. of Perdew
+ POSCAR, INCAR and KPOINTS ok, starting setup
+ WARNING: small aliasing (wrap around) errors must be expected
+ FFT: planning ...
+ WAVECAR not read
+ entering main loop
+       N       E                     dE             d eps       ncg     rms          rms(c)
+DAV:   1     0.175573377271E+02    0.17557E+02   -0.35513E+03  1392   0.734E+02
+DAV:   2    -0.802711675759E+01   -0.25584E+02   -0.23438E+02  1308   0.119E+02
+DAV:   3    -0.866363194823E+01   -0.63652E+00   -0.62556E+00  1468   0.212E+01
+DAV:   4    -0.866584880120E+01   -0.22169E-02   -0.21996E-02  1392   0.114E+00
+DAV:   5    -0.866586130685E+01   -0.12506E-04   -0.12433E-04  1464   0.885E-02    0.127E+01
+DAV:   6    -0.828157252844E+01    0.38429E+00   -0.92319E+00  1404   0.394E+01    0.492E+00
+DAV:   7    -0.825195691454E+01    0.29616E-01   -0.37475E-01  1456   0.778E+00    0.305E+00
+DAV:   8    -0.824318970988E+01    0.87672E-02   -0.52338E-03  1468   0.503E-01    0.128E+00
+DAV:   9    -0.823644670486E+01    0.67430E-02   -0.69387E-03  1652   0.510E-01    0.167E-01
+DAV:  10    -0.823645220401E+01   -0.54992E-05   -0.47622E-04  1416   0.271E-01    0.600E-02
+DAV:  11    -0.823646700290E+01   -0.14799E-04   -0.35954E-05  1420   0.579E-02    0.383E-02
+DAV:  12    -0.823647433384E+01   -0.73309E-05   -0.26360E-06  1340   0.124E-02    0.302E-02
+DAV:  13    -0.823646415178E+01    0.10182E-04   -0.17214E-06   724   0.124E-02    0.129E-02
+DAV:  14    -0.823646624874E+01   -0.20970E-05   -0.37373E-07   700   0.792E-03    0.561E-04
+DAV:  15    -0.823646674508E+01   -0.49634E-06   -0.15988E-08   668   0.114E-03
+   1 F= -.82364667E+01 E0= -.82364667E+01  d E =0.000000E+00  mag=     2.1677
+ writing wavefunctions

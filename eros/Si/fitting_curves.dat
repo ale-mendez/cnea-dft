@@ -1,0 +1,39 @@
+*** DIAMANTE ***
+Fitting with formula: y = a0 + 0.5625*a1*a2 * (a3*((a2/x)^(2/3)-1.0)^3+ ((a2/x)^(2/3)-1.0)^2*(6.0-4.0*(a2/x)^(2/3)))
+
+        a0 = -5.4169
+        a1 = 0.514754
+        a2 = 20.5998
+        a3 = 4.10694
+
+Chi-square: 0.00292512
+Correlation coefficient: 0.999903
+RMS relative error: 0.00365347
+Theil U coefficent: 0.00280432
+
+*** HCP ***
+Fitting with formula: y = a0 + 0.5625*a1*a2 * (a3*((a2/x)^(2/3)-1.0)^3+ ((a2/x)^(2/3)-1.0)^2*(6.0-4.0*(a2/x)^(2/3)))
+	
+        a0 = -4.94195
+	a1 = 0.590676
+	a2 = 14.3801
+	a3 = 4.15129
+
+Chi-square: 0.0010214
+Correlation coefficient: 0.999993
+RMS relative error: 0.0261937
+Theil U coefficent: 0.00181606
+
+*** beta-tin ***
+Fitting with formula: y = a0 + 0.5625*a1*a2 * (a3*((a2/x)^(2/3)-1.0)^3+ ((a2/x)^(2/3)-1.0)^2*(6.0-4.0*(a2/x)^(2/3)))
+
+	a0 = -5.16772
+	a1 = 0.690639
+	a2 = 15.3477
+	a3 = 3.98094
+
+Chi-square: 2.09426
+Correlation coefficient: 0.967203
+RMS relative error: 0.0658784
+Theil U coefficent: 0.0688287
+

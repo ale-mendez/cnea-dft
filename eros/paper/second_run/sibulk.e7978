@@ -1,0 +1,12 @@
+--------------------------------------------------------------------------
+[[6137,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: compute-10-4.local
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+[compute-10-4.local:28259] 3 more processes have sent help message help-mpi-btl-base.txt / btl:no-nics
+[compute-10-4.local:28259] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages

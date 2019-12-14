@@ -1,0 +1,49 @@
+/var/spool/torque/mom_priv/jobs/7347.sol105.tandar.cnea.gov.ar.SC: line 2: PBS: command not found
+--------------------------------------------------------------------------
+[[51465,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: compute-10-19.local
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+[compute-10-19.local:09817] 3 more processes have sent help message help-mpi-btl-base.txt / btl:no-nics
+[compute-10-19.local:09817] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+--------------------------------------------------------------------------
+[[51671,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: compute-10-19.local
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+[compute-10-19.local:09863] 3 more processes have sent help message help-mpi-btl-base.txt / btl:no-nics
+[compute-10-19.local:09863] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+--------------------------------------------------------------------------
+[[51685,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: compute-10-19.local
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+[compute-10-19.local:09909] 3 more processes have sent help message help-mpi-btl-base.txt / btl:no-nics
+[compute-10-19.local:09909] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+--------------------------------------------------------------------------
+[[51291,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: compute-10-19.local
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+[compute-10-19.local:09995] 3 more processes have sent help message help-mpi-btl-base.txt / btl:no-nics
+[compute-10-19.local:09995] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages

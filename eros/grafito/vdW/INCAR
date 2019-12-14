@@ -1,0 +1,11 @@
+NSW = 1 
+IBRION = -1
+PREC = Accurate
+LWAVE = .FALSE.
+LCHARG = .FALSE.
+ISMEAR = -5
+SIGMA = 0.01
+EDIFF = 1e-5
+ALGO = Fast
+
+IVDW=12

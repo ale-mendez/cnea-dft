@@ -1,0 +1,7 @@
+System = Si diamante
+ISTART=1
+ICHARG=11
+ISMEAR = 0; SIGMA = 0.1;
+ENCUT = 450
+IBRION=-1; 
+PREC=accurate
