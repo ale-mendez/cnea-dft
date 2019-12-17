@@ -2,7 +2,7 @@
 %\usepackage{wallpaper}
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage[top=1in, bottom=1.0in, left=1.5in, right=1.5in]{geometry}
+\usepackage[top=1in, bottom=1.0in, left=1.in, right=1.in]{geometry}
 
 \usepackage{amsmath}
 \usepackage{graphicx}
@@ -11,9 +11,14 @@
 \usepackage{gensymb}
 \usepackage[makeroom]{cancel}
 \usepackage{mathtools}% Loads amsmath
+\usepackage{tikz}
 
-
-
+\newlength\myheight
+\newcommand*\ccircled[1]{\settowidth{\myheight}{#1}%
+    \raisebox{-.1\myheight}{\tikz[baseline=(char.base)]{%
+        \node[shape=circle,draw,minimum size=1.5em,inner sep=1pt](char){#1};}}}
+        
+        
 \pagestyle{empty}
 %\setlength\parindent{0pt}
 
@@ -85,35 +90,291 @@ y si $\left<\psi_n|\psi_n\right>=\left<\phi|\phi\right>=1$, entonces, la ecuaci�
 
 \vspace{0.25cm}
 El Hamiltoniano de dos electrones se escribe como:
-\begin{equation}
- \hat{H} = -\frac{1}{2}\sum_{i=1}^2 \nabla^2 + \sum_{i=1}^2 v(\mathbf{r}_i) 
- + \sum_{i<j}^2 \frac{1}{\mathbf{r}_{ij}}\,.
-\end{equation}
+\begin{align}
+ \hat{H} &= -\frac{1}{2}\sum_{i=1}^2 \nabla_{\mathrm{r}_i}^2 
+ + \sum_{i=1}^2 v(\mathbf{r}_i) + \sum_{i<j}^2 \frac{1}{r_{ij}} \\
+ &= -\frac{1}{2} \nabla_{\mathrm{r}_1}^2 -\frac{1}{2} \nabla_{\mathrm{r}_1}^2 
+ +  v(\mathbf{r}_1) + v(\mathbf{r}_2) + \frac{1}{r_{12}} \\
+ &= \left[-\frac{1}{2} \nabla_{\mathrm{r}_1}^2 +  v(\mathbf{r}_1) \right] +
+ \left[-\frac{1}{2} \nabla_{\mathrm{r}_1}^2 + v(\mathbf{r}_2) \right]
+ + \frac{1}{r_{12}} \\
+ &= \hat{h}_1 + \hat{h}_2 + \frac{1}{r_{12}}
+\end{align}
 Asumiendo que la función de onda del sistema está dada por
 \begin{equation}
- \Psi^{\mathrm{HF}}(\mathbf{q}_1,\mathbf{q}_2)=\frac{1}{2}\left[
+ \Psi^{\mathrm{HF}}(\mathbf{q}_1,\mathbf{q}_2)=\frac{1}{\sqrt{2}}\left[
  \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)-\psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1)
  \right]\,,
+ \label{eq:slater2e}
 \end{equation}
-donde $q_i$ representa las coordenadas espaciales y de espín, 
+donde $\mathbf{q}_i$ representa las coordenadas espaciales y de espín, 
 la energía total de Hartree Fock del sistema resulta:
-La energía de Hartree--Fock está dada por:
 \begin{align}
  E^{\mathrm{HF}}
  &=\left<\Psi^{\mathrm{HF}}\right|\hat{H}\left|\Psi^{\mathrm{HF}}\right> \\
- &=\left<\Psi^{\mathrm{HF}}\right| -\frac{1}{2}\sum_{i=1}^2 \nabla^2 + \sum_{i=1}^2 v(\mathbf{r}_i) 
- + \sum_{i<j}^2 \frac{1}{\mathbf{r}_{ij}} \left|\Psi^{\mathrm{HF}}\right> \\
- &=\sum_{n=1}^2 \left[ I_n 
- + \frac{1}{2} \sum_{m=1}^{2}\left(J_{nm}-K_{nm}\right) \right] 
+ %%%%
+ &=\frac{1}{2}
+ \left< \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)
+ -\psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1) \right| \hat{H} 
+ \left| \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)
+ -\psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1)  \right> \\
+ %%%%
+ &=\frac{1}{2} \big[ 
+ \underbrace{\left< \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)  \right| \hat{H}
+ \left| \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2) \right>}_{\ccircled{A}} -
+ %%
+ \underbrace{\left< \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)  \right| \hat{H}
+ \left| \psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1) \right>}_{\ccircled{B}} \\
+ &\quad
+ %%
+ - \underbrace{\left< \psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1) \right| \hat{H}
+ \left| \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2) \right>}_{\ccircled{C}} + 
+ %%
+ \underbrace{\left< \psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1) \right| \hat{H}
+ \left| \psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1) \right> }_{\ccircled{D}}
+ \big] 
+ \end{align}
+\begin{align}
+ \ccircled{A}
+ &=\iint \psi_n^*(\mathbf{q}_1)\psi_m^*(\mathbf{q}_2) 
+ \left[ \hat{h}_1 + \hat{h}_2 + \frac{1}{r_{12}} \right] 
+ \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2) \,d\mathbf{q}_1 d\mathbf{q}_2 \\
+ %%%%%
+%  &=\iint \psi_n^*(\mathbf{q}_1)\psi_m^*(\mathbf{q}_2) \hat{h}_1 
+%   \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2) \,d\mathbf{q}_1 d\mathbf{q}_2 + \\
+%  &\qquad\quad
+%  \iint \psi_n^*(\mathbf{q}_1)\psi_m^*(\mathbf{q}_2) \hat{h}_2 
+%  \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2) \,d\mathbf{q}_1 d\mathbf{q}_2 + \\
+%  &\qquad\qquad\quad
+%  \iint \psi_n^*(\mathbf{q}_1)\psi_m^*(\mathbf{q}_2) 
+%  \frac{1}{r_{12}} 
+%  \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2) \,d\mathbf{q}_1 d\mathbf{q}_2 \\
+ %%%%%
+ &=\int \psi_n^*(\mathbf{q}_1)\, \hat{h}_1 \, \psi_n(\mathbf{q}_1) \,d\mathbf{q}_1
+  \underbrace{\int \psi_m^*(\mathbf{q}_2) \psi_m(\mathbf{q}_2) \, d\mathbf{q}_2}_{=1} \\
+ &\qquad\quad +
+ \underbrace{\int \psi_n^*(\mathbf{q}_1)\psi_n(\mathbf{q}_1)\,d\mathbf{q}_1}_{=1}  
+ \int \psi_m^*(\mathbf{q}_2) \, \hat{h}_2 \, \psi_m(\mathbf{q}_2) \,d\mathbf{q}_2 \\
+ &\qquad\qquad\quad +
+ \int \psi_n^*(\mathbf{q}_1)\psi_m^*(\mathbf{q}_2) 
+ \frac{1}{r_{12}} 
+ \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2) \,d\mathbf{q}_1 d\mathbf{q}_2 \\
+ %%%%%
+ &=\int \psi_n^*(\mathbf{q}_1)\, \hat{h}_1 \, \psi_n(\mathbf{q}_1) \,d\mathbf{q}_1 + 
+ \int \psi_m^*(\mathbf{q}_2) \, \hat{h}_2 \, \psi_m(\mathbf{q}_2) \,d\mathbf{q}_2 + \\
+ &\qquad\qquad\quad
+ \int \psi_n^*(\mathbf{q}_1)\psi_m^*(\mathbf{q}_2) 
+ \frac{1}{r_{12}} 
+ \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2) \,d\mathbf{q}_1 d\mathbf{q}_2 
 \end{align}
-donde 
-\begin{equation}
- I_n=\int\psi_n^*(\mathbf{q})\left[-\frac{1}{2}\nabla^2-v(\mathbf{r})\right]\psi_n(\mathbf{q}) \,d\mathbf{q}
-\end{equation}
-\begin{equation}
- J_{nm}=\iint 
-\end{equation}
 
+\begin{align}
+ \ccircled{B}
+ &=\iint \psi_n^*(\mathbf{q}_1)\psi_m^*(\mathbf{q}_2)  
+ \left[ \hat{h}_1 + \hat{h}_2 + \frac{1}{r_{12}} \right] 
+ \psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1) \,d\mathbf{q}_1 d\mathbf{q}_2 \\
+%  &=\iint \psi_n^*(\mathbf{q}_1)\psi_m^*(\mathbf{q}_2)\,\hat{h}_1\,
+%          \psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1) \,d\mathbf{q}_1 d\mathbf{q}_2
+%  +\\ &\qquad\quad
+%    \iint \psi_n^*(\mathbf{q}_1)\psi_m^*(\mathbf{q}_2)\, \hat{h}_2\,
+%          \psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1) \,d\mathbf{q}_1 d\mathbf{q}_2
+%   + \\ &\qquad\qquad\quad
+%    \iint \psi_n^*(\mathbf{q}_1)\psi_m^*(\mathbf{q}_2) \frac{1}{r_{12}} 
+%          \psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1)  \,d\mathbf{q}_1 d\mathbf{q}_2 \\
+ &=\int \psi_n^*(\mathbf{q}_1)\,\hat{h}_1\,\psi_m(\mathbf{q}_1) \,d\mathbf{q}_1
+   \cancel{\int \psi_m^*(\mathbf{q}_2) \psi_n(\mathbf{q}_2) d\mathbf{q}_2}
+ +\\ &\qquad\quad
+  \cancel{ \int \psi_n^*(\mathbf{q}_1)\psi_m(\mathbf{q}_1) \,d\mathbf{q}_1}
+   \int \psi_m^*(\mathbf{q}_2)\,\hat{h}_2\,\psi_n(\mathbf{q}_2) d\mathbf{q}_2
+  + \\ &\qquad\qquad\quad
+   \iint \psi_n^*(\mathbf{q}_1)\psi_m^*(\mathbf{q}_2) \frac{1}{r_{12}} 
+         \psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1)  \,d\mathbf{q}_1 d\mathbf{q}_2 \\
+%%%%
+ &=\iint \psi_n^*(\mathbf{q}_1)\psi_m^*(\mathbf{q}_2) \frac{1}{r_{12}} 
+         \psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1)  \,d\mathbf{q}_1 d\mathbf{q}_2 
+\end{align}
+
+\begin{align}
+ \ccircled{C}
+ &=\iint \psi_n^*(\mathbf{q}_2)\psi_m^*(\mathbf{q}_1)
+ \left[ \hat{h}_1 + \hat{h}_2 + \frac{1}{r_{12}} \right] 
+ \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2) \,d\mathbf{q}_1 d\mathbf{q}_2 \\
+%  &=\iint \psi_n^*(\mathbf{q}_2)\psi_m^*(\mathbf{q}_1)\,\hat{h}_1\,
+%          \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)\,d\mathbf{q}_1 d\mathbf{q}_2
+%  +\\ &\qquad\quad
+%    \iint \psi_n^*(\mathbf{q}_2)\psi_m^*(\mathbf{q}_1)\,\hat{h}_2\,
+%          \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)\,d\mathbf{q}_1 d\mathbf{q}_2
+%   + \\ &\qquad\qquad\quad
+%    \iint \psi_n^*(\mathbf{q}_2)\psi_m^*(\mathbf{q}_1) \frac{1}{r_{12}} 
+%          \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2) \,d\mathbf{q}_1 d\mathbf{q}_2 \\
+%%%%%
+ &=\int \psi_m^*(\mathbf{q}_1)\,\hat{h}_1\, \psi_n(\mathbf{q}_1)\,d\mathbf{q}_1
+   \cancel{\int \psi_n^*(\mathbf{q}_2)\psi_m(\mathbf{q}_2) \,d\mathbf{q}_2}
+ +\\ &\qquad\quad
+   \cancel{\int \psi_m^*(\mathbf{q}_1)\psi_n(\mathbf{q}_1)\,d\mathbf{q}_1}
+   \int \psi_n^*(\mathbf{q}_2)\,\hat{h}_2\,\psi_m(\mathbf{q}_2)\,d\mathbf{q}_2
+  + \\ &\qquad\qquad\quad
+   \iint \psi_n^*(\mathbf{q}_2)\psi_m^*(\mathbf{q}_1) \frac{1}{r_{12}} 
+         \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2) \,d\mathbf{q}_1 d\mathbf{q}_2 \\
+ &= \iint \psi_n^*(\mathbf{q}_2)\psi_m^*(\mathbf{q}_1) \frac{1}{r_{12}} 
+         \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2) \,d\mathbf{q}_1 d\mathbf{q}_2 
+\end{align}
+
+\begin{align}
+ \ccircled{D}
+ &= \iint \psi_n^*(\mathbf{q}_2)\psi_m^*(\mathbf{q}_1) 
+ \left[ \hat{h}_1 + \hat{h}_2 + \frac{1}{r_{12}} \right] 
+ \psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1) \,d\mathbf{q}_1 d\mathbf{q}_2 \\
+%  &= \iint \psi_n^*(\mathbf{q}_2)\psi_m^*(\mathbf{q}_1)\,\hat{h}_1\,
+%  \psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1) \,d\mathbf{q}_1 d\mathbf{q}_2 
+%  +\\ &\qquad\quad
+%  \iint \psi_n^*(\mathbf{q}_2)\psi_m^*(\mathbf{q}_1)\,\hat{h}_2\,
+%  \psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1)\,d\mathbf{q}_1 d\mathbf{q}_2 
+%   + \\ &\qquad\qquad\quad
+%  \iint \psi_n^*(\mathbf{q}_2)\psi_m^*(\mathbf{q}_1)\frac{1}{r_{12}}
+%  \psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1)\,d\mathbf{q}_1 d\mathbf{q}_2  \\
+ %%%%%
+ &= \int \psi_m^*(\mathbf{q}_1)\,\hat{h}_1\,\psi_m(\mathbf{q}_1) \,d\mathbf{q}_1
+ \underbrace{\int\psi_n^*(\mathbf{q}_2)\psi_n(\mathbf{q}_2)\,\,d\mathbf{q}_2}_{=1}
+ +\\ &\qquad\quad
+ \underbrace{ \int \psi_m^*(\mathbf{q}_1)\psi_m(\mathbf{q}_1)\,d\mathbf{q}_1}_{=1}
+ \int \psi_n^*(\mathbf{q}_2)\,\hat{h}_2\,\psi_n(\mathbf{q}_2)\,d\mathbf{q}_2
+  + \\ &\qquad\qquad\quad
+ \iint \psi_n^*(\mathbf{q}_2)\psi_m^*(\mathbf{q}_1)\frac{1}{r_{12}}
+ \psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1) \\
+ &=\int \psi_m^*(\mathbf{q}_1)\,\hat{h}_1\,\psi_m(\mathbf{q}_1) \,d\mathbf{q}_1+
+ \int \psi_n^*(\mathbf{q}_2)\,\hat{h}_2\,\psi_n(\mathbf{q}_2)\,d\mathbf{q}_2
+  + \\ &\qquad\qquad\quad
+ \iint \psi_n^*(\mathbf{q}_2)\psi_m^*(\mathbf{q}_1)\frac{1}{r_{12}}
+ \psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1) 
+\end{align}
+
+\begin{align}
+ E^{\mathrm{HF}}
+ &=\frac{1}{2}\left[ \sum_{i=1}^2 \left< \psi_i(\mathbf{q}_1)\right|\hat{h}_1\left| \psi_i(\mathbf{q}_1)\right> + 
+ \sum_{i=1}^2 \left<\psi_i(\mathbf{q}_2)\right|\hat{h}_2\left|\psi_i(\mathbf{q}_2)\right> \right]
+ \\ &\qquad
++\frac{1}{2}\bigg[\left<\psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2) \right|
+\frac{1}{r_{12}} \left|\psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2) \right>
+-\left<\psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)\right|\frac{1}{r_{12}}\left|
+\psi_m(\mathbf{q}_1)\psi_n(\mathbf{q}_2)\right>
+ \\ &\qquad\qquad\quad
+-\left<\psi_m(\mathbf{q}_1)\psi_n(\mathbf{q}_2)\right|\frac{1}{r_{12}}\left|
+\psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)\right>
++\left<\psi_m(\mathbf{q}_1)\psi_n(\mathbf{q}_2)\right|\frac{1}{r_{12}}\left|
+ \psi_m(\mathbf{q}_1)\psi_n(\mathbf{q}_2) \right> \bigg]\\
+%%%%%
+ &=\sum_{i=1}^2 \left< \psi_i(\mathbf{q})\right|\hat{h}\left| \psi_i(\mathbf{q})\right> 
+ \\ &\qquad
++\frac{1}{2}\bigg[
+\left<\psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)
+\right|\frac{1}{r_{12}} \left|
+\psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2) \right> +
+\left<\psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1)
+\right|\frac{1}{r_{12}} \left|
+ \psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1)\right>
+ \\ &\qquad\qquad\quad
+-\left<\psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)\right|\frac{1}{r_{12}}\left|
+\psi_m(\mathbf{q}_1)\psi_n(\mathbf{q}_2)\right>
+-\left<\psi_m(\mathbf{q}_1)\psi_n(\mathbf{q}_2)\right|\frac{1}{r_{12}}\left|
+\psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)\right>\bigg] 
+\end{align}
+Dado que los electrones son indistinguibles, tenemos
+\begin{align}
+ E^{\mathrm{HF}}
+%%%%%%
+ &=\sum_{i=1}^2 \left< \psi_i(\mathbf{q})\right|\hat{h}\left| \psi_i(\mathbf{q})\right> 
+ \\ &\qquad
++\frac{1}{2}\bigg[
+\left<\psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)
+\right|\frac{1}{r_{12}} \left|
+\psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2) \right> 
++\left<\psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)
+\right|\frac{1}{r_{21}} \left|
+ \psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)\right>
+ \\ &\qquad\qquad\quad
+-\left<\psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)\right|\frac{1}{r_{12}}\left|
+\psi_m(\mathbf{q}_1)\psi_n(\mathbf{q}_2)\right>
+-\left<\psi_m(\mathbf{q}_2)\psi_n(\mathbf{q}_1)\right|\frac{1}{r_{21}}\left|
+\psi_n(\mathbf{q}_2)\psi_m(\mathbf{q}_1)\right>\bigg] \\
+%%%%%%
+ &=\underbrace{\sum_{i=1}^2 \left< \psi_i(\mathbf{q})\right|
+ -\frac{1}{2}\nabla^2 \left| \psi_i(\mathbf{q})\right>}_{
+ \mathrm{Energia\,cinetica\,de\,particula\,indep.}}
+ +\underbrace{\sum_{i=1}^2 \left< \psi_i(\mathbf{q})\right| 
+ v(\mathbf{r}_i) \left| \psi_i(\mathbf{q})\right>}_{\mathrm{Energia\,debido\,a\,potencial\,externo}} \\
+ &\qquad\qquad
++\underbrace{\left<\psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)
+\right|\frac{1}{r_{12}} \left|
+\psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2) \right> }_{\mathrm{
+Termino\,directo}}
+-\underbrace{\left<\psi_n(\mathbf{q}_1)\psi_m(\mathbf{q}_2)\right|\frac{1}{r_{12}}\left|
+\psi_m(\mathbf{q}_1)\psi_n(\mathbf{q}_2)\right>}_{\mathrm{Termino\,de\,intercambio}}
+\end{align}
+En las ecuaciones de Hartree--Fock, el término de la energía directa está dado por la repulsión Coulombiana entre el electrón 1
+en el orbital $n$ y el electron 2 en el orbital $m$. Por otro lado,
+el término de la energía de intercambio no tiene una explicación
+física, sino que surge de la condición de indistinguibilidad dada
+por el determinante de Slater definido en la ecuación 
+(\ref{eq:slater2e}). 
+
+\vspace{0.5cm}
+Los términos directo y de intercambio en un sistema de un electrón,
+en donde $n=m$, resultan
+\begin{align}
+J_{n,n}&= \left<\psi_n(\mathbf{q}_1)\psi_n(\mathbf{q}_2)
+\right|\frac{1}{r_{12}} \left|
+\psi_n(\mathbf{q}_1)\psi_n(\mathbf{q}_2) \right> \\
+K_{n,m}&=\left<\psi_n(\mathbf{q}_1)\psi_n(\mathbf{q}_2)\right|\frac{1}{r_{12}}\left|
+\psi_n(\mathbf{q}_1)\psi_n(\mathbf{q}_2)\right> \\
+&\qquad \Rightarrow \quad J_{n,n}=K_{n,n}
+\end{align}
+
+\vspace{0.5cm}
+La función de onda de un electrón se puede descomponer en sus
+coordenadas espacial y de espín como
+\begin{equation}
+ \psi_n(\mathbf{q}) = \phi_n(\mathbf{r})\chi_n(\omega)\,.
+\end{equation}
+El término de la energía de interacción resulta
+\begin{align}
+ K_{n,m}
+ &=\int 
+ \frac{\phi_n^*(\mathbf{r}_1)\chi_n^*(\omega_1)\phi_m^*(\mathbf{r}_2)\chi_m^*(\omega_2)\phi_m(\mathbf{r}_1)\chi_m(\omega_1)\phi_n(\mathbf{r}_2)\chi_n(\omega_2)}{r_{12}} \,d\mathbf{r}_1\,d\mathbf{r}_2 \,d\omega_1\,d\omega_2\\
+ &=\int 
+ \frac{\phi_n^*(\mathbf{r}_1)\phi_m^*(\mathbf{r}_2)\phi_m(\mathbf{r}_1)\phi_n(\mathbf{r}_2)}{r_{12}} 
+ \,d\mathbf{r}_1\,d\mathbf{r}_2 
+ \int \chi_n^*(\omega_1)\chi_m(\omega_1)\,d\omega_1
+ \int \chi_m^*(\omega_2)\chi_n(\omega_2) \,d\omega_2\\
+\end{align}
+Cuando los dos electrones tienen igual projección de espín
+$\chi_n(\omega)=\chi_m(\omega)=\alpha(\omega)$ o 
+$\chi_n(\omega)=\chi_m(\omega)=\beta(\omega)$.
+Entonces,
+\begin{align}
+ K_{n,m}
+ &=\int 
+ \frac{\phi_n^*(\mathbf{r}_1)\phi_m^*(\mathbf{r}_2)\phi_m(\mathbf{r}_1)\phi_n(\mathbf{r}_2)}{r_{12}} 
+ \,d\mathbf{r}_1\,d\mathbf{r}_2 
+ \underbrace{\int \alpha^*(\omega_1)\alpha(\omega_1)\,d\omega_1}_{=1}
+ \underbrace{\int \alpha^*(\omega_2)\alpha(\omega_2) \,d\omega_2}_{=1}\\
+ &=\int 
+ \frac{\phi_n^*(\mathbf{r}_1)\phi_m^*(\mathbf{r}_2)\phi_m(\mathbf{r}_1)\phi_n(\mathbf{r}_2)}{r_{12}} 
+ \,d\mathbf{r}_1\,d\mathbf{r}_2 
+\end{align}
+Cuando los electrones tienen projección de espín opuesta,
+$\chi_n(\omega)=\alpha(\omega)$ y $\chi_m(\omega)=\beta(\omega)$ o 
+$\chi_n(\omega)=\beta(\omega)$ y $\chi_m(\omega)=\alpha(\omega)$.
+Entonces,
+\begin{align}
+ K_{n,m}
+ &=\int 
+ \frac{\phi_n^*(\mathbf{r}_1)\phi_m^*(\mathbf{r}_2)\phi_m(\mathbf{r}_1)\phi_n(\mathbf{r}_2)}{r_{12}} 
+ \,d\mathbf{r}_1\,d\mathbf{r}_2 
+ \underbrace{\int \alpha^*(\omega_1)\beta(\omega_1)\,d\omega_1}_{=0}
+ \underbrace{\int \alpha^*(\omega_2)\beta(\omega_2) \,d\omega_2}_{=0}\\
+ &=0
+\end{align}
 
 
 
