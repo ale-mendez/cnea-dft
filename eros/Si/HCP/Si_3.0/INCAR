@@ -1,7 +1,0 @@
-System = Si HCP
-ISMEAR = 0; SIGMA = 0.1;
-ENMAX = 450
-IBRION=2; ISIF=4 ; NSW=100
-EDIFF = 0.1E-04
-EDIFFG = -0.01
-PREC=accurate

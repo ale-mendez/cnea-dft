@@ -92,7 +92,7 @@ hasta {\verb fin= } $1.2\,a_{\mathrm{exp}}$.
 \newpage
 5. 
 \begin{figure}[h]
- \includegraphics[width=\textwidth]{punto5.eps}
+ \includegraphics[width=\textwidth]{Si/punto5.eps}
 \end{figure}
 Las puntos en las figuras (a), (b) y (c) corresponden a los valores
 de energía total en función del volumen de la celda para el silicio 
@@ -129,49 +129,29 @@ casos.
 6. Sabiendo que $P=-\frac{dE}{dV}$ y $G=E+PV$ (a $T=0K$), podemos
 determinar la presión teórica en la cual ocurrirá la transición 
 estructural de la estructura diamante a la $\beta$-Sn encontrando la
-intersección de las curvas de la energía de Gibbs de ambos casos.
-Esto lo podemos hacer gráficamente:
+pendiente en común de las curvas de energía total en ambos casos.
+Es decir, es necesario resolver el sistema de ecuaciones:
+\begin{align}
+ \frac{dE^{\mathrm{d}}}{dV}\bigg|_{V^{\mathrm{d}}} &= \frac{dE^{\beta}}{dV}\bigg|_{V^{\beta}} \\
+ \frac{dE^{\mathrm{d}}}{dV}\bigg|_{V^{\mathrm{d}}} &= \frac{E^{\mathrm{d}} -E^{\beta}}{V^{\mathrm{d}}-V^{\beta}}
+\end{align}
+donde $V^{\mathrm{d}}$ y $V^{\beta}$ son los valores de volumen en los
+que ocurre la transición. Para resolver este sistema, recurrimos al 
+ajuste analítico con la ecuación de estado de Birch--Murnaghan. De igual
+manera, la derivada de la energía total se puede obtener analíticamente.
+Resolviendo este sistema de ecuaciones con el paquete {\verb fsolve } 
+en {\verb scipy.optimize } de python 3, obtenemos:
+\begin{verbatim}
+Vd=14.3867
+Vb=18.9613
+\end{verbatim}
+Evaluando $V^{\mathrm{d}}$ en la expresión analítica de la derivada, 
+tenemos que el valor de presión para la cual ocurre la transición es
+$P=0.05146\,\mathrm{eV}/\AA^3= 8.2443\,$GPa.
+
 \begin{figure}[h]
 \centering
- \includegraphics[width=0.4\textwidth]{punto6.eps}
+ \includegraphics[width=0.4\textwidth]{Si/punto6.eps}
 \end{figure}
-
-También es posible hacerlo analíticamente, usando las expresiones 
-ajustadas de la ecuación de estado de Birch--Murnaghan:
-\begin{equation}
- E^{\mathrm{D}}(V)=\frac{9}{16} B_0^{\mathrm{D}} V_0^{\mathrm{D}} 
- \left\{B_0^{\mathrm{D}'}
- \left[\left(\frac{V_0^{\mathrm{D}}}{x}\right)^{2/3}- 1\right]^3 
- + \left[-4\left(\frac{V_0^{\mathrm{D}}}{x}\right)^{2/3} 
- + 6\right]
- \left[\left(\frac{V_0^{\mathrm{D}}}{x}\right)^{2/3} 
- - 1\right]^2\right\} + E_0^{\mathrm{D}}
-\end{equation}
-\begin{equation}
- E^{\beta}(V)=\frac{9}{16} B_0^{\beta} V_0^{\beta} 
- \left\{B_0^{\beta'}
- \left[\left(\frac{V_0^{\beta}}{x}\right)^{2/3}- 1\right]^3 
- + \left[-4\left(\frac{V_0^{\beta}}{x}\right)^{2/3} 
- + 6\right]
- \left[\left(\frac{V_0^{\beta}}{x}\right)^{2/3} 
- - 1\right]^2\right\} + E_0^{\beta}
-\end{equation}
-Las energ\'ias de Gibbs deben ser iguales en la transición. Así,
-tenemos:
-\begin{align}
- G_{\mathrm{D}}(V^{\mathrm{tran}})&=G_{\beta}(V^{\mathrm{tran}}) \\
- E^{\mathrm{D}}(V^{\mathrm{tran}}) - P^{\mathrm{D}}(V^{\mathrm{tran}}) V^{\mathrm{tran}} &= 
- E^{\beta}(V^{\mathrm{tran}}) - P^{\beta} V^{\mathrm{tran}} \\ 
- E^{\mathrm{D}}(V^{\mathrm{tran}}) -  E^{\beta}(V^{\mathrm{tran}}) &= 
- \left(P^{\mathrm{D}}(V^{\mathrm{tran}})  - P^{\beta} \right) V^{\mathrm{tran}} \\
- E^{\mathrm{D}}(V^{\mathrm{tran}}) = E^{\beta}(V^{\mathrm{tran}}) \quad &\Rightarrow \quad
- P^{\mathrm{D}}(V^{\mathrm{tran}}) = P^{\beta}(V^{\mathrm{tran}})
-\end{align}
-Reemplazando cada una de las expresiones de $E(V)$ y simplificando 
-los términos resultantes se obtiene una expresión en función de 
-los coeficientes que ajustan (1) y (2). Usando los valores 
-obtenidos 
-del ajuste anterior, el volumen teórico al cual ocurre la
-transición estructural es $V^{\mathrm{tran}}=16.6482 \AA^3$. 
 
 \end{document}

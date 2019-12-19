@@ -1,0 +1,8 @@
+System = Si diamante
+ISMEAR = 0; SIGMA = 0.1;
+ENCUT = 240
+IBRION=-1; 
+#ISIF=2 ; NSW=100
+EDIFF = 0.1E-04
+#EDIFFG = -0.01
+PREC=accurate
