@@ -1,8 +1,0 @@
-Pt-atom                     # title, make sure no empty linei between entities
-10 		  	    # lattice parameter (Ã…) of asupercell
-1.000000 0.000000 0.000000  # unit lattice vector
-0.000000 1.000000 0.000000  # unit lattice vector
-0.000000 0.000000 1.000000  # unit lattice vector
-1 			    # number of atoms
-Direct			    # direct coordinates considering each side of supercell as 1
-0.500000 0.500000 0.500000
