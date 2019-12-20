@@ -64,17 +64,7 @@ de interacción electrónica que son --en principio-- desconocidos
 (i.e., intercambio y correlación). Por otro lado, aunque la teoría de 
 HF no es completa --ya que no considera la correlación entre los 
 electrones-- ésta está descrita por términos electrónicos exactos. 
-Además, en DFT aparecen términos de autointeracción que no son 
-físicos y que en HF sí están contemplados y eliminados. 
-
-\vspace{0.25cm}
-La teoría de la DFT cuenta con múltiples aproximaciones que permiten 
-corregir el problema de la autointeracción y dar solución al 
-``desconocimiento'' de las funcionales de intercambio y correlación. 
-Por ejemplo, para un sistema de dos electrones, primero se considera 
-el sistema considerando que los electrones no interactúan, y luego se
-proponen funcionales para los términos no conocidos, como por ejemplo, 
-la aproximación de la densidad local (LDA).
-
+Además, en DFT aparecen términos de autointeracción que están 
+contemplados, y eliminados, en HF.
 
 \end{document}
