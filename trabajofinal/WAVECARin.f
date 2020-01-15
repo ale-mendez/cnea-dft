@@ -47,7 +47,7 @@
 *   dimensions below must be sufficiently large to agree with values
 *   in WAVECAR file; WAVECARin routine issues error message(s) otherwise
 
-      parameter(nbdim=120,npdim=15000,nwdim=50,nsdim=1)
+      parameter(nbdim=20,npdim=1500,nwdim=5000,nsdim=1)
 
       complex*8 coeff(npdim,nbdim,nwdim,nsdim)
       complex*16 cener(nbdim,nwdim,nsdim)
